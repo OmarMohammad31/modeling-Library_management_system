@@ -23,7 +23,8 @@ public class Library
     public void addItem(LibraryItem item){
         items.add(item);
     }
-    public LibraryItem searchItem(LibraryItem item) {
+
+    public LibraryItem getItem(LibraryItem item) {
         for (LibraryItem myItem: items){
             if (myItem==item) return item;
         }

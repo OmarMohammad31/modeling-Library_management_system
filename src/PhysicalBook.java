@@ -5,7 +5,7 @@ public class PhysicalBook extends LibraryItem implements Borrowable
     @Override
     public boolean borrow(LibraryItem item) {
         if (Library.getInstance().isAvailable(item)){
-            isBorrowed=true;
+            Library.getInstance().getItem(item).isBorrowed=true;
             borrowingTime = System.currentTimeMillis();
             return true;
         }

@@ -15,9 +15,9 @@ public abstract class LibraryItem
         return Library.getInstance().isAvailable(this);
     }
     public boolean returnItem(LibraryItem item){
-        LibraryItem myItem = Library.getInstance().searchItem(item);
+        LibraryItem myItem = Library.getInstance().getItem(item);
         if (myItem == null) return false;
-        else myItem.isBorrowed=false;
+        else Library.getInstance().getItem(item).isBorrowed=false;
         return true;
     }
     abstract public boolean borrow(LibraryItem item);
