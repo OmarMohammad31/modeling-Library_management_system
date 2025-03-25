@@ -5,7 +5,10 @@ import java.awt.event.ActionListener;
 
 public class GUI extends javax.swing.JFrame
 {
-    public GUI(){
+    private static final GUI instance = new GUI();
+
+    public static GUI getInstance() {return instance;}
+    private GUI(){
         this.setTitle("Library Management System");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exits the app when exiting the GUI
         this.setSize(1920, 1080); //window size
