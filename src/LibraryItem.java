@@ -4,7 +4,8 @@ public abstract class LibraryItem
     protected String author;
     protected String ISBN;
     protected boolean isBorrowed; //false by default in java
-
+    protected long borrowingTime;
+    protected long permissibleBorrowingTimeInDays;
     public LibraryItem() {}
     public LibraryItem(String title, String author, String ISBN) {
         this.title=title;

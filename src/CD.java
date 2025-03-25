@@ -1,7 +1,5 @@
 public class CD extends LibraryItem implements Borrowable
 {
-    private long borrowingTime;
-    private long permissibleBorrowingTimeInDays;
     public CD(){}
     public CD(String title, String author, String isbn) {
         super(title, author, isbn);

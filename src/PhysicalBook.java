@@ -1,7 +1,5 @@
 public class PhysicalBook extends LibraryItem implements Borrowable
 {
-    private long borrowingTime;
-    private long permissibleBorrowingTimeInDays;
     public PhysicalBook() {}
     public PhysicalBook(String title, String author, String isbn){
         super(title, author, isbn);

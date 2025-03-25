@@ -1,8 +1,5 @@
 public class EBook extends LibraryItem implements Borrowable
 {
-    private long borrowingTime;
-    private long permissibleBorrowingTimeInDays;
-
     public EBook() {}
     public EBook(String title, String author, String isbn) {
         super(title, author, isbn);

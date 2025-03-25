@@ -1,9 +1,6 @@
 public class DVD extends LibraryItem implements Borrowable
 {
-    private long borrowingTime;
-    private long permissibleBorrowingTimeInDays;
     public DVD() {}
-
     public DVD(String title, String author, String isbn) {
         super(title, author, isbn);
     }
