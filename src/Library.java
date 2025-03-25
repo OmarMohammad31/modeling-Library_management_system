@@ -30,4 +30,13 @@ public class Library
         }
         return null;
     }
+
+    public LibraryItem getItem(int index) {
+        if (index<0 || index>=items.size()) return null;
+        return items.get(index);
+    }
+
+    public int size() {
+        return items.size();
+    }
 }

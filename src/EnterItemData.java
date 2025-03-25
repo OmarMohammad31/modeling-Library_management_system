@@ -1,70 +1,77 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class EnterItemData extends JFrame
-{
+public class EnterItemData extends JDialog {
     private JTextField titleField, authorField, isbnField;
-    public String getTitle(){return titleField.getText();}
-    public String getAuthor() {return authorField.getText();}
-    public String getISBN() {return isbnField.getText();}
-    public EnterItemData(){
-        this.setTitle("Enter Item Data");
-        this.setSize(1920, 1080);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.getContentPane().setBackground(new Color(0x123456));
-        //this.setLayout(new FlowLayout());
-        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+    private String title, author, isbn;
+    private boolean submitted = false;
 
-        JLabel enterItemData = new JLabel("Enter Item Data");
-        enterItemData.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 36));
-        enterItemData.setForeground(Color.GREEN);
-        enterItemData.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.add(enterItemData);
-        this.add(Box.createVerticalStrut(20));
+    public EnterItemData(JFrame parent) {
+        super(parent, "Enter Item Data", true);
+        this.setSize(600, 400);
+        this.setLayout(null);
+        this.getContentPane().setBackground(new Color(0x0A2A4A)); // Dark Blue Background
+        this.setLocationRelativeTo(parent);
 
-        JPanel itemDataPanel = new JPanel();
-        itemDataPanel.setLayout(new BoxLayout(itemDataPanel, BoxLayout.Y_AXIS));
-        itemDataPanel.setOpaque(false);
-        itemDataPanel.setMaximumSize(new Dimension(600, 300));
+        // Title Label
+        JLabel titleLabel = new JLabel("Enter Item Data");
+        titleLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
+        titleLabel.setForeground(Color.GREEN);
+        titleLabel.setBounds(200, 20, 300, 40);
+        add(titleLabel);
 
-        titleField = new JTextField(20);
-        authorField = new JTextField(20);
-        isbnField = new JTextField(20);
+        // Input Fields
+        JLabel titleText = new JLabel("Title:");
+        titleText.setForeground(Color.WHITE);
+        titleText.setBounds(100, 80, 100, 30);
+        add(titleText);
 
-        itemDataPanel.add(createLabeledField("Title:",titleField));
-        itemDataPanel.add(Box.createVerticalStrut(10)); // Spacing
-        itemDataPanel.add(createLabeledField("Author:", authorField));
-        itemDataPanel.add(Box.createVerticalStrut(10)); // Spacing
-        itemDataPanel.add(createLabeledField("ISBN:", isbnField));
-        itemDataPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.add(Box.createVerticalStrut(20));
-        this.add(itemDataPanel);
+        titleField = new JTextField();
+        titleField.setBounds(200, 80, 250, 30);
+        add(titleField);
 
+        JLabel authorText = new JLabel("Author:");
+        authorText.setForeground(Color.WHITE);
+        authorText.setBounds(100, 130, 100, 30);
+        add(authorText);
+
+        authorField = new JTextField();
+        authorField.setBounds(200, 130, 250, 30);
+        add(authorField);
+
+        JLabel isbnText = new JLabel("ISBN:");
+        isbnText.setForeground(Color.WHITE);
+        isbnText.setBounds(100, 180, 100, 30);
+        add(isbnText);
+
+        isbnField = new JTextField();
+        isbnField.setBounds(200, 180, 250, 30);
+        add(isbnField);
+
+        // Submit Button
         JButton submitButton = new JButton("Submit");
-        submitButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
-        submitButton.setForeground(Color.WHITE);
-        submitButton.setBackground(new Color(0x123456));
-        submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        submitButton.setBounds(250, 250, 100, 40);
         submitButton.addActionListener(e -> {
-            String title = titleField.getText();
-            String isbn = isbnField.getText();
-            JOptionPane.showMessageDialog(this, "Item '" + title + "' added successfully with ISBN " + isbn);
+            title = titleField.getText().trim();
+            author = authorField.getText().trim();
+            isbn = isbnField.getText().trim();
+
+            if (title.isEmpty() || author.isEmpty() || isbn.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please fill all fields!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            submitted = true;
+            this.dispose(); // Close Window
         });
-        this.add(submitButton);
+        add(submitButton);
+
         this.setVisible(true);
     }
-    private JPanel createLabeledField(String labelText, JTextField textField) {
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // Align fields left
-        panel.setOpaque(false); // Transparent background
 
-        JLabel label = new JLabel(labelText);
-        label.setFont(new Font("Tahoma", Font.PLAIN, 24));
-        label.setForeground(Color.WHITE);
-
-        textField.setFont(new Font("Tahoma", Font.PLAIN, 24));
-
-        panel.add(label);
-        panel.add(textField);
-        return panel;
-    }
+    // Getters
+    public boolean isSubmitted() { return submitted; }
+    public String getTitle() { return title; }
+    public String getAuthor() { return author; }
+    public String getISBN() { return isbn; }
 }
