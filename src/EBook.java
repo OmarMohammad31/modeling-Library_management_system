@@ -14,7 +14,7 @@ public class EBook extends LibraryItem implements Borrowable
     @Override
     public boolean isBorrowTimeExceeded(LibraryItem item)
     {
-        if (item.isBorrowed) return permissibleBorrowingTimeInDays<=System.currentTimeMillis()-borrowingTime;
+        if (item.isBorrowed) return permissibleBorrowingTimeInDays*24*60*60*1000 >System.currentTimeMillis()-borrowingTime;
         return false;
     }
 

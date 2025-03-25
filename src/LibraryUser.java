@@ -8,6 +8,7 @@ public class LibraryUser
     public boolean borrowItem(LibraryItem item){
         if (!Library.getInstance().isAvailable(item)) return false;
         Library.getInstance().getItem(item).isBorrowed=true;
+        borrowedItems.add(item);
         return true;
     }
 
