@@ -4,6 +4,13 @@ public abstract class LibraryItem
     protected String author;
     protected String ISBN;
     protected boolean isBorrowed; //false by default in java
+
+    public LibraryItem() {}
+    public LibraryItem(String title, String author, String ISBN) {
+        this.title=title;
+        this.author=author;
+        this.ISBN=ISBN;
+    }
     public void setTitle(String title){this.title=title;}
     public void setAuthor(String author){this.author=author;}
     public void setISBN(String ISBN){this.ISBN=ISBN;}

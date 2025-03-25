@@ -4,6 +4,9 @@ import java.awt.*;
 public class EnterItemData extends JFrame
 {
     private JTextField titleField, authorField, isbnField;
+    public String getTitle(){return titleField.getText();}
+    public String getAuthor() {return authorField.getText();}
+    public String getISBN() {return isbnField.getText();}
     public EnterItemData(){
         this.setTitle("Enter Item Data");
         this.setSize(1920, 1080);
@@ -36,20 +39,6 @@ public class EnterItemData extends JFrame
         itemDataPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(Box.createVerticalStrut(20));
         this.add(itemDataPanel);
-
-        /*titleField = createLabeledField("Title:", 24);
-        itemDataPanel.add(titleField);
-        itemDataPanel.add(Box.createVerticalStrut(10));
-
-        authorField = createLabeledField("Author:", 24);
-        itemDataPanel.add(authorField);
-        itemDataPanel.add(Box.createVerticalStrut(10));
-
-        isbnField = createLabeledField("ISBN:", 24);
-        itemDataPanel.add(isbnField);*/
-
-
-
 
         JButton submitButton = new JButton("Submit");
         submitButton.setFont(new Font("Tahoma", Font.PLAIN, 24));

@@ -20,32 +20,56 @@ public AddNewItemWindow(){
 
     JButton physicalBook = new JButton("1. PhysicalBook");
     physicalBook.setBounds(100, 100, 200, 100);
-    physicalBook.addActionListener(e -> new EnterItemData().setVisible(true));
+    physicalBook.addActionListener(e -> {
+        EnterItemData enterItemData = new  EnterItemData();
+        enterItemData.setVisible(true);
+        Library.getInstance().addItem(new PhysicalBook(enterItemData.getTitle(), enterItemData.getAuthor(), enterItemData.getISBN()));
+    });
     this.add(physicalBook);
 
     JButton EBook = new JButton("2. EBook");
     EBook.setBounds(100, 200, 200, 100);
-    EBook.addActionListener(e -> new EnterItemData().setVisible(true));
+    EBook.addActionListener(e -> {
+        EnterItemData enterItemData = new  EnterItemData();
+        enterItemData.setVisible(true);
+        Library.getInstance().addItem(new EBook(enterItemData.getTitle(), enterItemData.getAuthor(), enterItemData.getISBN()));
+    });
     this.add(EBook);
 
     JButton ReferenceBook = new JButton("3. ReferenceBook");
     ReferenceBook.setBounds(100, 300, 200, 100);
-    ReferenceBook.addActionListener(e -> new EnterItemData().setVisible(true));
+    ReferenceBook.addActionListener(e -> {
+        EnterItemData enterItemData = new  EnterItemData();
+        enterItemData.setVisible(true);
+        Library.getInstance().addItem(new ReferenceBook(enterItemData.getTitle(), enterItemData.getAuthor(), enterItemData.getISBN()));
+    });
     this.add(ReferenceBook);
 
     JButton CD = new JButton("4. CD");
     CD.setBounds(100, 400, 200, 100);
-    CD.addActionListener(e -> new EnterItemData().setVisible(true));
+    CD.addActionListener(e ->{
+        EnterItemData enterItemData = new  EnterItemData();
+        enterItemData.setVisible(true);
+        Library.getInstance().addItem(new CD(enterItemData.getTitle(), enterItemData.getAuthor(), enterItemData.getISBN()));
+    });
     this.add(CD);
 
     JButton DVD = new JButton("5. DVD");
     DVD.setBounds(100, 500, 200, 100);
-    DVD.addActionListener(e -> new EnterItemData().setVisible(true));
+    DVD.addActionListener(e ->{
+        EnterItemData enterItemData = new  EnterItemData();
+        enterItemData.setVisible(true);
+        Library.getInstance().addItem(new DVD(enterItemData.getTitle(), enterItemData.getAuthor(), enterItemData.getISBN()));
+    });
     this.add(DVD);
 
     JButton journal = new JButton("6. Journal");
     journal.setBounds(100, 600, 200, 100);
-    journal.addActionListener(e -> new EnterItemData().setVisible(true));
+    journal.addActionListener(e ->{
+        EnterItemData enterItemData = new  EnterItemData();
+        enterItemData.setVisible(true);
+        Library.getInstance().addItem(new Journal(enterItemData.getTitle(), enterItemData.getAuthor(), enterItemData.getISBN()));
+    });
     this.add(journal);
 
     JButton[] buttons = {physicalBook, EBook, ReferenceBook, CD, DVD, journal};

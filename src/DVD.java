@@ -2,6 +2,16 @@ public class DVD extends LibraryItem implements Borrowable
 {
     private long borrowingTime;
     private long permissibleBorrowingTimeInDays;
+    public DVD() {}
+
+    public DVD(String title, String author, String isbn) {
+        super(title, author, isbn);
+    }
+
+    public DVD(String title, String author, String isbn, long permissibleBorrowingTimeInDays) {
+        super(title, author, isbn);
+        this.permissibleBorrowingTimeInDays = permissibleBorrowingTimeInDays;
+    }
     @Override
     public boolean borrow(LibraryItem item) {
         if (Library.getInstance().isAvailable(item)){
