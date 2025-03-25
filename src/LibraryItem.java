@@ -12,7 +12,7 @@ public abstract class LibraryItem
     public String getISBN(){return ISBN;}
     public boolean isBorrowed(){return isBorrowed;}
     public boolean isAvailable(LibraryItem item){
-        return Library.getInstance().isAvailable(this);
+        return Library.getInstance().isAvailable(item);
     }
     public boolean returnItem(LibraryItem item){
         LibraryItem myItem = Library.getInstance().getItem(item);
