@@ -1,7 +1,7 @@
 public class CD extends LibraryItem implements Borrowable
 {
     private long borrowingTime;
-    private long permissibleBorrowingTime;
+    private long permissibleBorrowingTimeInDays;
     @Override
     public boolean borrow(LibraryItem item) {
         if (Library.getInstance().isAvailable(item)){
@@ -14,7 +14,7 @@ public class CD extends LibraryItem implements Borrowable
     @Override
     public boolean isBorrowTimeExceeded(LibraryItem item)
     {
-        if (item.isBorrowed) return permissibleBorrowingTime<=System.currentTimeMillis()-borrowingTime;
+        if (item.isBorrowed) return permissibleBorrowingTimeInDays*24*60*60*1000 >System.currentTimeMillis()-borrowingTime;
         return false;
     }
 
