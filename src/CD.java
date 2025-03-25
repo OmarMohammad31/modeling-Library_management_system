@@ -14,7 +14,8 @@ public class CD extends LibraryItem implements Borrowable
     @Override
     public boolean isBorrowTimeExceeded(LibraryItem item)
     {
-        return permissibleBorrowingTime<=System.currentTimeMillis()-borrowingTime;
+        if (item.isBorrowed) return permissibleBorrowingTime<=System.currentTimeMillis()-borrowingTime;
+        return false;
     }
 
 }
