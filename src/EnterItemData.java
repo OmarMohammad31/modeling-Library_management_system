@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class EnterItemData extends JFrame
 {
+    private JTextField titleField, authorField, isbnField;
     public EnterItemData(){
         this.setTitle("Enter Item Data");
         this.setSize(1920, 1080);
@@ -16,33 +17,54 @@ public class EnterItemData extends JFrame
         enterItemData.setForeground(Color.GREEN);
         enterItemData.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(enterItemData);
-
         this.add(Box.createVerticalStrut(20));
 
-        JPanel itemData = new JPanel();
-        itemData.setLayout(new BoxLayout(itemData, BoxLayout.Y_AXIS));
-        itemData.setOpaque(false);
+        JPanel itemDataPanel = new JPanel();
+        itemDataPanel.setLayout(new BoxLayout(itemDataPanel, BoxLayout.Y_AXIS));
+        itemDataPanel.setOpaque(false);
+        itemDataPanel.setMaximumSize(new Dimension(600, 300));
 
-        itemData.add(createLabeledField("Title:", 20));
-        itemData.add(Box.createVerticalStrut(10)); // Spacing
-        itemData.add(createLabeledField("Author:", 20));
-        itemData.add(Box.createVerticalStrut(10)); // Spacing
-        itemData.add(createLabeledField("ISBN:", 20));
-        itemData.setAlignmentX(Component.CENTER_ALIGNMENT);
-        itemData.setMaximumSize(new Dimension(600, 300));
-        this.add(itemData);
-        //this.add(Box.createVerticalStrut(20));
+        titleField = new JTextField(20);
+        authorField = new JTextField(20);
+        isbnField = new JTextField(20);
+
+        itemDataPanel.add(createLabeledField("Title:",titleField));
+        itemDataPanel.add(Box.createVerticalStrut(10)); // Spacing
+        itemDataPanel.add(createLabeledField("Author:", authorField));
+        itemDataPanel.add(Box.createVerticalStrut(10)); // Spacing
+        itemDataPanel.add(createLabeledField("ISBN:", isbnField));
+        itemDataPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(Box.createVerticalStrut(20));
+        this.add(itemDataPanel);
+
+        /*titleField = createLabeledField("Title:", 24);
+        itemDataPanel.add(titleField);
+        itemDataPanel.add(Box.createVerticalStrut(10));
+
+        authorField = createLabeledField("Author:", 24);
+        itemDataPanel.add(authorField);
+        itemDataPanel.add(Box.createVerticalStrut(10));
+
+        isbnField = createLabeledField("ISBN:", 24);
+        itemDataPanel.add(isbnField);*/
+
+
+
 
         JButton submitButton = new JButton("Submit");
         submitButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
         submitButton.setForeground(Color.WHITE);
         submitButton.setBackground(new Color(0x123456));
         submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        submitButton.addActionListener(e -> {this.dispose();});
+        submitButton.addActionListener(e -> {
+            String title = titleField.getText();
+            String isbn = isbnField.getText();
+            JOptionPane.showMessageDialog(this, "Item '" + title + "' added successfully with ISBN " + isbn);
+        });
         this.add(submitButton);
         this.setVisible(true);
     }
-    private JPanel createLabeledField(String labelText, int columns) {
+    private JPanel createLabeledField(String labelText, JTextField textField) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // Align fields left
         panel.setOpaque(false); // Transparent background
 
@@ -50,7 +72,6 @@ public class EnterItemData extends JFrame
         label.setFont(new Font("Tahoma", Font.PLAIN, 24));
         label.setForeground(Color.WHITE);
 
-        JTextField textField = new JTextField(columns);
         textField.setFont(new Font("Tahoma", Font.PLAIN, 24));
 
         panel.add(label);
