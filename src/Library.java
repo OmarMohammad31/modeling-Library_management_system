@@ -15,6 +15,18 @@ public class Library
         }
         return false;
     }
+    public boolean isBorrowed(String title){
+        for (LibraryItem item: items) {
+            if (item.getTitle().equals(title)) return item.isBorrowed();
+        }
+        return false;
+    }
+    public boolean isExistingItem(String title){
+        for (LibraryItem item: items) {
+            if (item.getTitle().equals(title)) return true;
+        }
+        return false;
+    }
     public boolean isAvailable(String title){
         for (LibraryItem item: items) {
             if (item.getTitle().equals(title)) return !item.isBorrowed();

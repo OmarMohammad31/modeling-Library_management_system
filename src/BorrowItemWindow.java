@@ -86,8 +86,4 @@ public class BorrowItemWindow extends JFrame {
 
         this.setVisible(true); // Display the frame
     }
-
-    public static void main(String[] args) {
-        new BorrowItemWindow();
-    }
 }

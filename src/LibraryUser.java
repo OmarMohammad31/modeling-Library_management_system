@@ -36,4 +36,11 @@ public class LibraryUser
         Library.getInstance().getItem(item).isBorrowed=false;
         return true;
     }
+    public boolean returnItem(String title)
+    {
+        if (!Library.getInstance().isAvailable(title)) return false;
+        LibraryItem item=Library.getInstance().getItem(title);
+        item.isBorrowed=false;
+        return true;
+    }
 }
